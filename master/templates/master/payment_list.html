@@ -1,0 +1,57 @@
+{% extends 'master/master_main.html' %}
+{% load static %}
+{% block content %}
+  <div class="page-wrapper">
+    
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    
+
+                    <div class="table-responsive">
+                        <h2 style="font-weight: bolder;">Payment List</h2>
+                        <table class="table text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0" style="font-weight:900;">Payment By</th>
+                                    <th class="border-top-0" style="font-weight:900;">Paid To</th>
+                                    <th class="border-top-0" style="font-weight:900;">Amount</th>
+                                    <th class="border-top-0" style="font-weight:900;">Order id</th>
+                                    <th class="border-top-0" style="font-weight:900;">Razorpay id</th>
+                                    <th class="border-top-0" style="font-weight:900;">Commission</th>
+                                    <th class="border-top-0" style="font-weight:900;">Status</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                               
+                              {% for payment in payment %}
+                                <tr>
+                                  <td >{{payment.sender}}</td>
+                                  <td><a href="{% url 'payment-details' payment.recipient.id payment.id  %}">{{payment.recipient}}</a></td>
+                                
+                                  <td>{{payment.amount_rs}}</td>
+                                  <td>{{payment.order_id}}</td>
+                                  <td>{{payment.razorpay_payment_id}}</td>
+                                  <td>{{payment.dev_commission}}</td>
+                                  <td>{{payment.paid}}</td>
+                                  
+                                </tr>
+                                {% endfor %}
+                                
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+
+
+{% endblock content %}

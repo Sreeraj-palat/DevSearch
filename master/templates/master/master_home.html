@@ -1,0 +1,90 @@
+{% extends 'master/master_main.html' %}
+
+{% block content %}
+
+<style>
+    a { color: inherit; } 
+</style>
+    
+
+
+
+<div class="page-wrapper">
+
+    <div class="container-fluid">
+       
+        <div class="row justify-content-center">
+            
+            <div class="col-lg-4 col-md-12">
+                <a href="{% url 'user-list' %}">
+                <div class="white-box analytics-info">
+                    <h3 class="box-title">Total Users</h3>
+                    <ul class="list-inline two-part d-flex align-items-center mb-0">
+                        <li>
+                            <div id="sparklinedash"><canvas width="67" height="30"
+                                    style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                            </div>
+                        </li>
+                        <li class="ms-auto"><span class="counter text-success">{{user_count}} Users</span></li>
+                    </ul>
+                </div>
+            </a>
+            </div>
+       
+
+            <div class="col-lg-4 col-md-12">
+                <a href="{% url 'project-list' %}">
+                <div class="white-box analytics-info">
+                    <h3 class="box-title">Total Projects</h3>
+                    <ul class="list-inline two-part d-flex align-items-center mb-0">
+                        <li>
+                            <div id="sparklinedash2"><canvas width="67" height="30"
+                                    style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                            </div>
+                        </li>
+                        <li class="ms-auto"><span class="counter text-purple">{{project_count}} Projects</span></li>
+                    </ul>
+                </div>
+            </a>
+
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <a href="{% url 'job-list' %}">
+                <div class="white-box analytics-info">
+                    <h3 class="box-title">Job Posts</h3>
+                    <ul class="list-inline two-part d-flex align-items-center mb-0">
+                        <li>
+                            <div id="sparklinedash3"><canvas width="67" height="30"
+                                    style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                            </div>
+                        </li>
+                        <li class="ms-auto"><span class="counter text-info">{{job_count}} Posts</span>
+                        </li>
+                    </ul>
+                </div>
+            </a>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <a href="{% url 'payment-list' %}">
+                <div class="white-box analytics-info">
+                    <h3 class="box-title">Total Payments</h3>
+                    <ul class="list-inline two-part d-flex align-items-center mb-0">
+                        <li>
+                            <div id="sparklinedash4"><canvas width="67" height="30"
+                                    style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                            </div>
+                        </li>
+                        <li class="ms-auto"><span class="counter text-info">{{payment_sum}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </a>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+
+{% endblock content %}

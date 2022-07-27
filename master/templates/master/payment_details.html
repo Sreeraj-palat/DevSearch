@@ -1,0 +1,193 @@
+{% extends 'master/master_main.html' %}
+{% load static %}
+ {% block content %}
+
+<div class="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Column -->
+      <div class="col-lg-4 col-xlg-3 col-md-12">
+        <div class="white-box">
+          <div class="user-bg">
+            <div class="overlay-box">
+              <div class="user-content">
+                <a href="javascript:void(0)"
+                  ><img
+                    src="{{profile.profile_image.url}}"
+                    class="thumb-lg img-circle"
+                    alt="img"
+                /></a>
+                <h4 class="text-white mt-2">{{profile.name}}</h4>
+                <h5 class="text-white mt-2">{{profile.email}}</h5>
+                <h5 class="text-white mt-2">{{profile.phone}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% if pay_id.paid == True %}
+        <!-- <div class="white-box">
+          <div class="user-bg">
+            <div class="overlay-box">
+              <div class="user-content">
+               
+                <h4 class="text-white mt-2">Paid By = {{pay_id.sender}}</h4>
+                <h4 class="text-white mt-2">Amount = {{amount}}</h4>
+                <h4 class="text-white mt-2">Paid By = {{pay_id.sender}}</h4>
+                <h4 class="text-white mt-2">Balence to be paid to {{pay_id.recipient}} = {{balence}}</h4>
+                
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="white-box analytics-info">
+            <h3 class="box-title">Paid By</h3>
+            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                <li>
+                    <div ><canvas width="67" height="30"
+                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                    </div>
+                </li>
+                <li class="ms-auto"><span class="counter text-success">{{pay_id.sender}}</span></li>
+            </ul>
+        </div>
+        <div class="white-box analytics-info">
+            <h3 class="box-title">Total Amount credited</h3>
+            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                <li>
+                    <div ><canvas width="67" height="30"
+                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                    </div>
+                </li>
+                <li class="ms-auto"><span class="counter text-success">{{amount}}</span></li>
+            </ul>
+        </div>
+        <div class="white-box analytics-info">
+            <h3 class="box-title">Balence to be paid to {{pay_id.recipient}}</h3>
+            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                <li>
+                    <div ><canvas width="67" height="30"
+                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                    </div>
+                </li>
+                {% if pay_id.paid_to_dev %}
+                <li class="ms-auto"><span class="counter text-success">0</span></li>
+                {% else %}
+                <li class="ms-auto"><span class="counter text-success">{{balence}}</span></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        
+                    <!-- .col -->
+                    {% if pay_id.paid_to_dev %}
+                    <div class="col-md-12 col-lg-8 col-sm-12" >
+                        <div class="card white-box p-0">
+                            <div class="card-body">
+                                
+        
+                                
+                                 <button class="btn btn-success" style="color: white;">
+                                  Payment Transfered Successfully 
+                                </button>
+                              </div>
+                           
+                            
+                            </div>
+                        </div>
+                                    
+                                {% else %}
+                                <div class="col-md-12 col-lg-8 col-sm-12">
+                                  <div class="card white-box p-0">
+                                      <div class="card-body">
+                                    
+                               
+                                <h3 class="box-title mb-0">Update Payment Status</h3><br>
+                               <a href="{% url 'update-payment' pay_id.id %}"> <button class="btn btn-success"style="color: white;">
+                                    Amount Succesfully Transfer to {{pay_id.recipient}}
+                                  </button></a>
+                                  
+                            </div>
+                           
+                            
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                 
+
+
+        {% endif %}
+      </div>
+      
+
+
+      <div class="col-lg-8 col-xlg-9 col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <form class="form-horizontal form-material">
+              <div class="form-group mb-4">
+                <label class="col-md-12 p-0">Bank Name</label>
+                <div class="col-md-12 border-bottom p-0">
+                  <p>{{profile.bank_name}}</p>
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label class="col-md-12 p-0">Branch</label>
+                <div class="col-md-12 border-bottom p-0">
+                  <p>{{profile.bank_branch}}</p>
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label class="col-md-12 p-0">IFSC</label>
+                <div class="col-md-12 border-bottom p-0">
+                  <p>{{profile.ifsc}}</p>
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label class="col-md-12 p-0">Account Number</label>
+                <div class="col-md-12 border-bottom p-0">
+                  <p>{{profile.account_number}}</p>
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label class="col-md-12 p-0">Beneficiary Name</label>
+                <div class="col-md-12 border-bottom p-0">
+                  <p>{{profile.beneficiary_name}}</p>
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <div class="col-sm-12">
+                  {% if pay_id.paid == True %}
+                  <button class="btn btn-success">
+                    Amount Succesfully credited to Devsearch
+                  </button>
+                  
+
+                  {% else %}
+                  <button class="btn btn-danger">Payment Failed</button>
+                  {% endif %}
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Column -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+{% endblock content %}

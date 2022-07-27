@@ -1,0 +1,70 @@
+{% extends 'main.html' %} 
+{% load auth_extras %}
+{% block content %}
+
+
+
+
+
+
+
+<main class="projects" >
+  <section class="hero-section text-center">
+    <div class="container container--narrow">
+      <div class="hero-section__box">
+        <h2>Search for <span>Job Updates</span></h2>
+      </div>
+
+      <div class="hero-section__search">
+        <form class="form" action="" method="get">
+          <div class="form__field">
+            <label for="formInput#search">Search For Job Updates </label>
+            <input class="input input--text" id="formInput#search" type="text" name="search_query" value="{{search_query}}"
+              placeholder="Search by Job Title" />
+          </div>
+
+          <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+        </form>
+      </div>
+    </div>
+  </section>
+  <!-- Search Result: DevList -->
+  <section class="projectsList">
+    <div class="container">
+       
+      <div class="grid grid--three">
+        {% for job in jobs %}
+
+        
+        
+       
+        <div class="column">
+          <div class="card project">
+            <a href="{% url 'job-details' job.id %}" class="project">
+              <img class="project__thumbnail" src="{{ job.featured_image.url }}" alt="project thumbnail" />
+              <div class="card__body">
+                <h3 class="project__title">{{job.title}}</h3>
+                <p><a class="project__author" href="{% url 'user-profiles' job.owner.id %}">{{job.owner.name}}</a></p>
+                
+               
+                  
+                  
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+        
+        
+        
+
+      </div>
+    </div>
+  </section>
+
+ 
+</main>
+</body>
+
+{% endblock content %}

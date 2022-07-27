@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+ <!-- Main Section -->
+ 
+
+ 
+ <main class="singleProject my-md">
+    <div class="container" >
+      <div class="layout">
+        
+        <div class="column column--1of1">
+          <div style="align-items: center;">
+          <img class="singleProject__preview" src="{{ job.featured_image.url }}" alt="portfolio thumbnail" />
+          <a href="{% url 'user-profiles' job.owner.id %}" class="singleProject__developer">{{job.owner.name}}</a>
+          <h2 class="singleProject__title">{{job.title}}</h2>
+          <h3 class="singleProject__subtitle">Job Description</h3>
+          <div class="singleProject__info">
+            {{job.description|linebreaksbr}}
+            <br>
+            <br>
+            
+                
+              <a href="{% url 'create-response' job.owner.id %}" class="btn btn--sub btn--lg" >Apply Now</a>
+              
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+
+
+
+{% endblock content %}
+ 
+    

@@ -1,0 +1,43 @@
+{% extends 'master/master_main.html' %}
+{% block content %}
+  <div class="page-wrapper">
+    
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    
+                    <div class="table-responsive">
+                        <h2 style="font-weight: bolder;">Job List</h2>
+                        <table class="table text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0" style="font-weight:900;">User</th>
+                                    <th class="border-top-0" style="font-weight:900;">Job Title</th>
+                                    <th class="border-top-0" style="font-weight:900;">Job Posted on</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                              {% for job in job %}
+                                <tr>
+                                  <td >{{job.owner}}</td>
+                                  <td>{{job.title}}</td>
+                                  <td>{{job.created}}</td>
+                                 
+                                </tr>
+                                {% endfor %}
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+
+
+{% endblock content %}

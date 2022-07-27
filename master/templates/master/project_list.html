@@ -1,0 +1,47 @@
+{% extends 'master/master_main.html' %}
+{% block content %}
+  <div class="page-wrapper">
+    
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    
+                    <div class="table-responsive">
+                        <h2 style="font-weight: bolder;">Project List</h2>
+                        <table class="table text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0" style="font-weight:900;">User</th>
+                                    <th class="border-top-0" style="font-weight:900;">Project Title</th>
+                                    <th class="border-top-0" style="font-weight:900;">Used Tech</th>
+                                    <th class="border-top-0" style="font-weight:900;">Total votes</th>
+                                    <th class="border-top-0" style="font-weight:900;">Posted on</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                              {% for project in project %}
+                                <tr>
+                                  <td >{{project.owner}}</td>
+                                  <td>{{project.title}}</td>
+                                  <td>{{project.tags}}</td>
+                                  <td>{{project.vote_total}}</td>
+                                  <td>{{project.created}}</td>
+                                 
+                                </tr>
+                                {% endfor %}
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+
+
+{% endblock content %}

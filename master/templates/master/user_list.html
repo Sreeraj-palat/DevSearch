@@ -1,0 +1,55 @@
+{% extends 'master/master_main.html' %}
+{% load static %}
+{% block content %}
+  <div class="page-wrapper">
+    
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    
+                    <div class="table-responsive">
+                        <h2 style="font-weight: bolder;">User List</h2>
+                        <table class="table text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0" style="font-weight:900;">User Name</th>
+                                    <th class="border-top-0" style="font-weight:900;">Full Name</th>
+                                    <th class="border-top-0" style="font-weight:900;">Email</th>
+                                    <th class="border-top-0" style="font-weight:900;">Block/Activate</th>
+                                    <th class="border-top-0" style="font-weight:900;">Update</th>
+                                    
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                              {% for user in users %}
+                                <tr>
+                                  <td >{{user.username}}</td>
+                                  <td>{{user.first_name}}</td>
+                                  <td>{{user.email}}</td>
+                                  {% if user.is_active %}
+                                  <td><a href="{% url 'block-user' user.id %}">Block User</a></td>
+                                  {% else %}
+                                  <td><a href="{% url 'block-user' user.id %}">Activate User</a></td>
+                                  {% endif %}
+                                 
+                                  <td><a href="{% url 'edit-user' user.id %}"><img src="{% static 'images/edit.svg' %}" alt="" /></a>
+                                    
+                                   
+                                </tr>
+                                {% endfor %}
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+
+
+{% endblock content %}

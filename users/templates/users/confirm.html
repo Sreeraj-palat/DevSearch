@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="auth" style="margin-top: -80px;">
+  <div class="card">
+    <div class="auth__header text-center">
+      <a href="/">
+        <img src="{% static 'images/icon.svg' %}" alt="icon" />
+      </a>
+      <h3>Account Login</h3>
+      <!-- <p>Hello Please Tell Us Who You Are ?..</p> -->
+    </div>
+
+    <div class="auth__actions">
+     <a href="{% url 'register' %}"> <input class="btn btn--sub btn--lg" type="button" value="iam a Developer"  /></a>
+     <a href="{% url 'rec-register' %}"> <input class="btn btn--sub btn--lg" type="button" value="iam a Recruter"  /></a>
+    </div>
+    <div class="auth__alternative">
+      <p>Already have an Account?</p>
+      <a href="{% url 'login' %}">Log In</a>
+    </div>
+  </div>
+</div>
+    
+{% endblock content %}
