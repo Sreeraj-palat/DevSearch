@@ -10,8 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+
 from pathlib import Path
 import os 
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-g4_sm5%g4cxnfu^a4iftx%a$jm8^w6*wl(ax#+x%_d1#3w83c)'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -154,12 +157,15 @@ USE_I18N = True
 
 USE_TZ = True 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'mydevtest403@gmail.com'
-EMAIL_HOST_PASSWORD = 'idmwaxqkweunprse'
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+
+
 
 
 # Static files (CSS, JavaScript, Images)
@@ -182,11 +188,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = 'AKIAU7MABXEDAH2WFMNA'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'palat-devsearch-bucket'
-AWS_QUERYSTRING_AUTH = False
-AWS_S3_FILE_OVERWRITE  = False
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+AWS_QUERYSTRING_AUTH = config('AWS_QUERYSTRING_AUTH')
+AWS_S3_FILE_OVERWRITE = config('AWS_S3_FILE_OVERWRITE')
 
 
 
